@@ -1,0 +1,71 @@
+{
+    "name": "kununu/symfony-api-skeleton",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-cache-bundle": "^1.2",
+        "doctrine/orm": "^2.5",
+        "incenteev/composer-parameter-handler": "^2.0",
+        "jms/serializer-bundle": "^1.0",
+        "kununu/controller-validation-bundle": "dev-master",
+        "sensio/distribution-bundle": "^5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/polyfill-apcu": "^1.0",
+        "kununu/rest-api-bundle": "^1.0",
+        "symfony/framework-bundle": "~3.4",
+        "symfony/security-bundle": "3.4",
+        "symfony/event-dispatcher": "3.4",
+        "phpoffice/phpspreadsheet": "^1.12"
+    },
+    "require-dev": {
+        "sensio/generator-bundle": "^3.0",
+        "vlucas/phpdotenv": "^2.4",
+        "phpunit/phpunit": "^5.7",
+        "symfony/debug-bundle": "3.4",
+        "symfony/twig-bundle": "3.4",
+        "symfony/web-profiler-bundle": "3.4",
+        "symfony/stopwatch": "^4.2",
+        "symfony/web-server-bundle": "3.4",
+        "symfony/apache-pack": "^1.0",
+        "symfony/browser-kit": "^4.2"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
+        ]
+    },
+    "extra": {
+        "symfony-app-dir": "src",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "config/parameters.yml",
+            "env-map": {
+                "secret": "SECRET"
+            }
+        },
+        "branch-alias": null
+    }
+}

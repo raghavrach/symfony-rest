@@ -1,0 +1,4 @@
+services:
+    ApiBundle\:
+        resource: '%kernel.root_dir%/ApiBundle/*'
+        exclude: '%kernel.root_dir%/ApiBundle/{Document,Features}'

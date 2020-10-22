@@ -1,0 +1,5 @@
+#composer install will generate a parameters.yml out of this. It will fill the parameters from the env vars via the
+#env-map provided in incenteev-parameters in composer.json
+#parameters should only contain env vars that are different depending on the environment (dev vs prod)
+parameters:
+    secret: '%env(SECRET)%'

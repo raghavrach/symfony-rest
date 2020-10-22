@@ -1,0 +1,33 @@
+parameters:
+    data_server_information:
+        file_path: "%kernel.root_dir%/../web/assets/Server_Information.xlsx"
+        reader_type: "Xlsx"
+        filter_values:
+            storage:
+                - "0"
+                - "250GB"
+                - "500GB"
+                - "1TB"
+                - "2TB"
+                - "3TB"
+                - "4TB"
+                - "8TB"
+                - "12TB"
+                - "24TB"
+                - "48TB"
+                - "72TB"
+            ram:
+                - "2GB"
+                - "4GB"
+                - "8GB"
+                - "12GB"
+                - "16GB"
+                - "24GB"
+                - "32GB"
+                - "48GB"
+                - "64GB"
+                - "96GB"
+            harddisk_type:
+                - "SAS"
+                - "SATA"
+                - "SSD"

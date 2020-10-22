@@ -1,0 +1,21 @@
+services:
+    # Register controllers as service.
+    app.index_controller:
+        class: ApiBundle\Controller\IndexController
+        arguments: ['@logger']
+    app.filter_controller:
+        class: ApiBundle\Controller\FilterController
+        arguments: ['@logger']
+    app.search_controller:
+        class: ApiBundle\Controller\SearchController
+        arguments: ['@logger']
+
+    # Register Custom services
+    api.services.filter:
+        class: ApiBundle\Service\Filter
+        public: true
+        arguments: [%data_server_information%, '@logger']
+    api.services.search:
+        class: ApiBundle\Service\Search
+        public: true
+        arguments: [%data_server_information%, '@logger']

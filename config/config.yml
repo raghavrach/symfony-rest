@@ -1,0 +1,35 @@
+imports:
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: parameters.yml }
+
+framework:
+    #esi:             ~
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/../config/routing.yml"
+        strict_requirements: ~
+    validation:      { enable_annotations: false }
+    #serializer:      { enable_annotations: true }
+    default_locale:  "en"
+    translator:
+        enabled: false
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    http_method_override: true
+    php_errors:
+        log: true
+
+# MediaMonks Rest API bundle
+mediamonks_rest_api:
+    serializer: jms
+    request_matcher:
+        whitelist: [~^/~]
+        blacklist: [~^/_~]
+
+kununu_controller_validation:
+    constraints_namespace: ApiBundle\Validator\Constraints
+    validation_exception:
+        class: CommonBundle\Exception\ValidationException
+        message: Validation error
+        code: 400

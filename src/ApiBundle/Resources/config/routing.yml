@@ -1,0 +1,14 @@
+index:
+    path:       /
+    defaults:   { _controller: app.index_controller:indexAction }
+    methods:    [GET]
+
+api_filters:
+    path:       /filters
+    defaults:   { _controller: app.filter_controller:customerDataFiltersAction }
+    methods:    [GET]
+
+api_search:
+    path:       /search
+    defaults:   { _controller: app.search_controller:searchAction }
+    methods:    [POST]
