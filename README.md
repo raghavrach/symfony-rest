@@ -29,9 +29,9 @@ Navigate to http://127.0.0.1:8000/ and verify the installation is correct.
 ##### GET API to fetch the filter values
 * `/filters`
 
-##### POST API to filter data
+##### GET API to filter data
 * `/search`
-    ###### POST PARAMS:
+    ###### QUERY PARAMS:
     ```bash
     ram - Array of RAM values Ex: ['32GM', '4GB']
     hardDiskType - Array of hard disk type Ex: ['SAS', 'SATA']
