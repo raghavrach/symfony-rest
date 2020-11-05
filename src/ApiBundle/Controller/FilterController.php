@@ -8,7 +8,7 @@ class FilterController extends BaseController
     /**
      * @return array - Filter Data
      */
-    public function customerDataFiltersAction()
+    public function customerDataFiltersAction(): array
     {
         # Log started
         $this->logger->info("GET Filter Action Starts");

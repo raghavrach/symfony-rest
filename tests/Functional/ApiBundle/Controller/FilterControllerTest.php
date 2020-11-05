@@ -9,7 +9,7 @@ class FilterControllerTest extends ApiTestCase
 {
     public function testFilterAction()
     {
-        $response = $this->requestGet('filters');
+        $response = $this->requestGet('server-information/get-filter-options');
         $this->assertArrayHasKey('data', $response);
         $this->assertArrayHasKey('storage', $response['data']);
         $this->assertArrayHasKey('ram', $response['data']);

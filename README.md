@@ -27,11 +27,11 @@ Navigate to http://127.0.0.1:8000/ and verify the installation is correct.
 
 ## Available endpoints
 ##### GET API to fetch the filter values
-* `/filters`
+* `/server-information/get-filter-options`
 
 ##### GET API to filter data
-* `/search`
-    ###### QUERY PARAMS:
+* `/server-information/search-by-resource`
+    ###### GET PARAMS:
     ```bash
     ram - Array of RAM values Ex: ['32GM', '4GB']
     hardDiskType - Array of hard disk type Ex: ['SAS', 'SATA']

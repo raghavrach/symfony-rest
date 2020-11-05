@@ -51,7 +51,7 @@ class ValidationException extends AbstractValidationException
         return $this->errors;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $return = [
             'code'      => $this->getCode(),

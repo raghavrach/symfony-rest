@@ -2,9 +2,13 @@
 namespace CommonBundle\Service;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter;
 use PhpOffice\PhpSpreadsheet\Reader\IReadFilter;
 use PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter\Column;
 use PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter\Column\Rule;
+use PhpOffice\PhpSpreadsheet\Worksheet\RowIterator;
 
 /*
  * This class is a factory class for PhpSpreadsheet excel reader
@@ -27,7 +31,7 @@ class ExcelReaderFactory
      * @param $filePath
      * @param $readerType
      */
-    public function __construct($filePath, $readerType = 'Xlsx')
+    public function __construct(string $filePath, string $readerType = 'Xlsx')
     {
         $this->readerType = $readerType;
         $this->filePath = $filePath;
@@ -41,7 +45,7 @@ class ExcelReaderFactory
      *
      * @return Excel Reader Object
      */
-    private function initialize()
+    private function initialize(): ExcelReaderFactory
     {
         $this->reader = IOFactory::createReader($this->readerType);
         $this->reader->setReadDataOnly(TRUE);
@@ -54,7 +58,7 @@ class ExcelReaderFactory
      *
      * @return Excel Spreadsheet
      */
-    public function getSpreadSheet()
+    public function getSpreadSheet(): Spreadsheet
     {
         return $this->spreadSheet;
     }
@@ -64,7 +68,7 @@ class ExcelReaderFactory
      *
      * @return Excel Sheet
      */
-    public function getSheet()
+    public function getSheet(): Worksheet
     {
         return $this->getSpreadSheet()->getActiveSheet();
     }
@@ -74,7 +78,7 @@ class ExcelReaderFactory
      *
      * @return Excel AutoFilter
      */
-    public function getAutoFilter()
+    public function getAutoFilter(): AutoFilter
     {
         return $this->getSheet()->getAutoFilter();
     }
@@ -84,7 +88,7 @@ class ExcelReaderFactory
      *
      * @return Class Object
      */
-    public function setAutoFilter($dimension=Null)
+    public function setAutoFilter(string $dimension=Null): ExcelReaderFactory
     {
         $filterDimension = $dimension ? $dimension : $this->getSheet()->calculateWorksheetDimension();
         $this->getSheet()->setAutoFilter($filterDimension);
@@ -96,7 +100,7 @@ class ExcelReaderFactory
      *
      * @return Excel Column
      */
-    public function getFilterColumn($column)
+    public function getFilterColumn(string $column): Column
     {
         $autoFilter = $this->getAutoFilter();
         return $autoFilter->getColumn($column);
@@ -107,7 +111,7 @@ class ExcelReaderFactory
      *
      * @return Excel Column Filter
      */
-    public function setFilterType($column, $filterType)
+    public function setFilterType(string $column, $filterType): Column
     {
         $columnFilter = $this->getFilterColumn($column);
         return $columnFilter->setFilterType($filterType);
@@ -123,7 +127,7 @@ class ExcelReaderFactory
      * @param $ruleType - Excel rule type
      * @return Excel obj
      */
-    public function setFilterRule($column, $rule, $value, $filterType=Column::AUTOFILTER_FILTERTYPE_CUSTOMFILTER, $ruleType=Rule::AUTOFILTER_RULETYPE_CUSTOMFILTER)
+    public function setFilterRule(string $column, $rule, string $value, $filterType=Column::AUTOFILTER_FILTERTYPE_CUSTOMFILTER, $ruleType=Rule::AUTOFILTER_RULETYPE_CUSTOMFILTER): Rule
     {
         $columnFilter = $this->setFilterType($column, $filterType);
         return $columnFilter->createRule()
@@ -147,7 +151,7 @@ class ExcelReaderFactory
      *
      * @return Excel iterator obj
      */
-    public function getIteratorData()
+    public function getIteratorData(): RowIterator
     {
         return $this->getSheet()->getRowIterator();
     }

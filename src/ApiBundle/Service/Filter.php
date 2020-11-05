@@ -36,7 +36,7 @@ class Filter
      *
      * @return array $storageFilterValues
      */
-    public function getStorageFilter()
+    public function getStorageFilter(): Array
     {
         return $this->dataServerInformation["filter_values"]["storage"];
     }
@@ -46,7 +46,7 @@ class Filter
      *
      * @return array $ramFilterValues
      */
-    public function getRamFilter()
+    public function getRamFilter(): Array
     {
         return $this->dataServerInformation["filter_values"]["ram"];
     }
@@ -56,7 +56,7 @@ class Filter
      *
      * @return array $hddFilterValues
      */
-    public function getHarddiskTypeFilter()
+    public function getHarddiskTypeFilter(): Array
     {
         return $this->dataServerInformation["filter_values"]["harddisk_type"];
     }
@@ -66,7 +66,7 @@ class Filter
      *
      * @return array $filterInfo - Containing all the filter array
      */
-    public function getFilterData()
+    public function getFilterData(): Array
     {
         # Get Location dropdown from Excel
 

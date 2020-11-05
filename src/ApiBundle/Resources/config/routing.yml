@@ -4,11 +4,11 @@ index:
     methods:    [GET]
 
 api_filters:
-    path:       /filters
+    path:       /server-information/get-filter-options
     defaults:   { _controller: app.filter_controller:customerDataFiltersAction }
     methods:    [GET]
 
 api_search:
-    path:       /search
+    path:       /server-information/search-by-resource
     defaults:   { _controller: app.search_controller:searchAction }
-    methods:    [POST]
+    methods:    [GET]

@@ -49,7 +49,7 @@ class ServerInformationReader
      * @param $indexed - Excel data indexed
      * @return array $locationData - Unique location data from Excel
      */
-    public function getLocationData($column, $empty=NULL, $formula=TRUE, $formatted=TRUE, $indexed = FALSE)
+    public function getLocationData($column, $empty=NULL, $formula=TRUE, $formatted=TRUE, $indexed = FALSE): array
     {
         # Start from 2nd row and till highest row
         $columnRange = $column.'2:'.$column.$this->sheet->getHighestRow();
@@ -65,7 +65,7 @@ class ServerInformationReader
      * @param $value - Value for the applied rule
      * @return ServerInformationReader object
      */
-    public function setCustomRule($column, $rule, $value)
+    public function setCustomRule($column, $rule, $value): ServerInformationReader
     {
         $this->reader->setFilterRule($column, $rule, $value);
 
@@ -77,7 +77,7 @@ class ServerInformationReader
      *
      * @return $searchData - Formatted search data
      */
-    public function prepareSearchData()
+    public function prepareSearchData(): array
     {
         $searchData = [];
         # Print qualified data

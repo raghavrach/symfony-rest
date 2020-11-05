@@ -38,12 +38,13 @@ class Search
      * @param &$reader - Referenced excel reader
      * @param $values - Post values
      */
-    public function setRamFilterRules(&$reader, $values)
+    public function setRamFilterRules(ServerInformationReader &$reader, array $values): ServerInformationReader
     {
         foreach($values as $ramValue)
         {
             $reader->setCustomRule('B', Rule::AUTOFILTER_COLUMN_RULE_EQUAL, $ramValue.'*');
         }
+        return $reader;
     }
 
     /**
@@ -52,12 +53,13 @@ class Search
      * @param &$reader - Referenced excel reader
      * @param $values - Post values
      */
-    public function setHDDFilterRules(&$reader, $values)
+    public function setHDDFilterRules(ServerInformationReader &$reader, array $values): ServerInformationReader
     {
         foreach($values as $hddValue)
         {
             $reader->setCustomRule('C', Rule::AUTOFILTER_COLUMN_RULE_EQUAL, '*'.$hddValue.'*');
         }
+        return $reader;
     }
 
     /**
@@ -66,12 +68,13 @@ class Search
      * @param &$reader - Referenced excel reader
      * @param $values - Post values
      */
-    public function setLocationFilterRules(&$reader, $values)
+    public function setLocationFilterRules(ServerInformationReader &$reader, array $values): ServerInformationReader
     {
         foreach($values as $lValue)
         {
             $reader->setCustomRule('D', Rule::AUTOFILTER_COLUMN_RULE_EQUAL, $lValue);
         }
+        return $reader;
     }
 
     /**
@@ -80,7 +83,7 @@ class Search
      * @param $postData - Post values from filter
      * @return $searchData - Filtered data
      */
-    public function searchCustomerInformation($postData)
+    public function searchCustomerInformation(array $postData): array
     {
         # Get Excel Reader
         try{
